@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <math.h>
 
 int smash(int a, int b);
 
@@ -22,7 +23,6 @@ int smash(int a, int b){
   std::vector<int> b_surv;
 
   for (int x = 0; x < a_vec.size(); ++x){
-    //std::cout << a_vec[x] << " " << b_vec[x] << std::endl;
     if (a_vec[x] == b_vec[x]){
       //both survive
       a_surv.push_back(a_vec[x]);
@@ -48,10 +48,17 @@ int smash(int a, int b){
       
     }
   }
-
-  for (int x = 0; x < b_surv.size(); ++x){
-    std::cout << b_surv[x] << std::endl;
+  int a_result = 0;
+  int b_result = 0;
+  
+  for (int x = 0; x < a_surv.size(); ++x){
+    a_result += a_surv[x] * pow(10,x);
   }
+  for (int x = 0; x < b_surv.size(); ++x){
+    b_result += b_surv[x] * pow(10,x);
+  }
+
+  std::cout << a_result << " " << b_result << std::endl;
   
   return 1;
 }
