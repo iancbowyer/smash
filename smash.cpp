@@ -5,7 +5,9 @@
 int smash(int a, int b);
 
 int main(){
-  return smash(47293,110237);
+  std::cout << smash(47293,110237) << std::endl;
+
+  return 0;
 }
 
 int smash(int a, int b){
@@ -58,7 +60,26 @@ int smash(int a, int b){
     b_result += b_surv[x] * pow(10,x);
   }
 
-  std::cout << a_result << " " << b_result << std::endl;
-  
-  return 1;
+  if (a_result == b_result){
+    return a_result;
+  }
+  else if (((a_result * b_result) % 2) == 0){
+    //even
+    if (a_result > b_result){
+      return a_result;
+    }
+    else{
+      return b_result;
+    }
+  }
+  else{
+    //odd
+    if (a_result > b_result){
+      return b_result;
+    }
+    else{
+      return a_result;
+    }
+  }
 }
+
